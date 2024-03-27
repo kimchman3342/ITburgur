@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+.is-preload {
+    margin-top: 0 !important;
+    min-width: 320px;
+    height: 100%;
+    font: 12px / 14px 'Nanum Gothic', 'Dotum', 'applegothic', sans-serif;
+    color: #444;
+    word-break: break-all;
+    word-wrap: break-word;
+    word-break: keep-all;
+    text-align: center;
+}
+
+body, div, ul, ol, li, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none;
+    
+}
+
+
+#modal-body-content img {
+	width: 300px;
+}
+
+.modal-content{
+	width: 650px;
+}
+
+section {
+    width: calc(100% - 22.4rem);
+    display: inline-block;
+}  	
+#mainarea {
+    padding-top: 4rem;
+    margin-bottom: 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    font-family: "Hahmlet", serif;
+}
+
+.dim{
+	padding-top: 4rem;
+    margin-bottom: 6rem;
+    display: flex;
+    width: 100%;
+    height: 1.4rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+	
+}
+.new {
+	display: flex;
+	padding-top: 3rem;
+	font-family: "Hahmlet", serif;
+}
+
+
+.image {
+    width: 300px;
+    height: 180px;
+    object-fit: cover;
+    margin: 3rem 2rem 0 0;
+    cursor: pointer;
+}
+
+.image:hover {
+	scale: 1.5;
+}
+
+
+	.cate {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 1px; 
+    font-size: xx-large;
+    padding-left: 5rem;
+    font-family: "Hahmlet", serif;
+    font-style: italic;
+}
+
+
+	.category-button {
+    padding: 3rem 20px; 
+    border: 0; 
+    border-radius: 10px; 
+    background-color: white; 
+    text-decoration: none; 
+    color: #333; 
+    font-weight: bold; 
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+	.category-button:hover {
+    color: red; 
+    text-decoration: underline;
+}
+	.category-button:active{
+	text-decoration: underline;
+	
+	}
+	
+	.product {
+		display: block;
+		font-size: medium;
+	}
+	
+	.intro {
+	font-size: large;
+	font-family: fantasy;
+	padding: 4rem 40rem 0 0;
+
+}
+
+

@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+
+body {
+overflow-x: hidden;
+font-family: "Hahmlet", serif;
+}
+
+/* 공지사항 검색 폼 스타일 */
+#search {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	padding: 20px 0; /* 위아래 여백 추가 */
+	background-color: #f9f9f9; /* 검색 폼 배경색 추가 */
+	border-radius: 10px; /* 모서리를 둥글게 처리 */
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+	font-family: "Hahmlet", serif;
+}
+
+#search select, #search input[type="text"], #search button {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+	min-width: 120px;
+	font-family: "Hahmlet", serif;
+}
+
+#search input[type="text"] {
+	flex-grow: 1;
+	margin-right: 10px;
+	font-family: "Hahmlet", serif;
+}
+
+#search button {
+	background-color: #FF8C0A;
+	color: #fff;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s, transform 0.2s
+		ease-in-out;
+	font-family: "Hahmlet", serif;
+}
+
+#search button:hover {
+	background-color: #ca710b;
+}
+
+/* 공지사항 리스트 스타일 */
+#main {
+	display: flex;
+	flex-direction: column;
+	width: 80%; /* 전체 폭에 대한 비율 조정 */
+	margin: 0 auto; /* 가운데 정렬 */
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px; /* 각 항목의 패딩 조정 */
+	border-bottom: 2px solid #ddd; /* 구분선 스타일 변경 */
+	transition: background-color 0.3s; /* 호버 효과를 위한 transition 추가 */
+}
+
+.row:first-child {
+	font-weight: bold;
+	background-color: #f2f2f2;
+}
+
+.row a {
+	text-decoration: none;
+	color: #333;
+}
+
+/* 각 항목의 폭 조절 */
+.row span {
+	flex: 1; /* 동일한 너비로 설정 */
+	text-align: center; /* 가운데 정렬 */
+}
+
+/* 버튼 스타일 */
+.write-btn {
+	font-weight: 500;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #FF8C0A;
+	color: #fff;
+	text-decoration: none;
+	transition: background-color 0.3s, color 0.3s, transform 0.2s
+		ease-in-out;
+	cursor: pointer;
+	min-width: 120px;
+	font-family: "Hahmlet", serif;
+	
+}
+
+.write-btn:hover {
+	background-color: #FF8200;
+	transform: scale(1.05);
+}
+
+/* 호버 효과 */
+.row:hover {
+	background-color: #f9f9f9; /* 호버 시 배경색 변경 */
+}
+
+/* 제목에 호버 효과 추가 */
+.row a:hover {
+	color: #FF8C0A; /* 호버 시 텍스트 색상 변경 */
+	font-weight: bold; /* 호버 시 텍스트 굵기 변경 */
+}
+
+.brg_paging .prev {
+	background-image:
+		url('https://www.shinsegaefood.com/brand/nobrandburger/images/button/btn_brd_paging_prev.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-right: 30px; /* 화살표 이미지와 텍스트 간격 조절 */
+	overflow: hidden;
+}
+.current-page {
+    text-decoration: underline;
+}
+.brg_paging .next {
+	background-image:
+		url('https://www.shinsegaefood.com/brand/nobrandburger/images/button/btn_brd_paging_next.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-right: 30px; /* 화살표 이미지와 텍스트 간격 조절 */
+	overflow: hidden;
+}
+
+.brg_paging .pagenum {
+    text-decoration: none; /* 페이지 번호에 밑줄 제거 */
+}
+
+.brg_paging .pagenum.current-page {
+    text-decoration: underline; /* 현재 페이지 번호에만 밑줄 추가 */
+}
+
+.brg_paging .pagenum:after {
+	content: url('right_arrow.png'); /* 다음 페이지 화살표 이미지 URL */
+	display: inline-block;
+	margin-left: 5px; /* 화살표 이미지와 숫자 간격 조절 */
+}

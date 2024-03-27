@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+/* notice_update.css */
+
+/* 전체적인 스타일 */
+body {
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+#write {
+    margin: 50px auto;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    width: 70px;
+    font-weight: bold;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"], textarea, input[type="file"], button {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical; /* 세로로만 조절 가능하도록 */
+}
+
+/* 버튼 스타일 */
+button {
+   background-color: #FF8C0A;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+ 
+   
+button:hover {
+    background-color: #FF8200;
+}
+
+/* 이미지 미리보기 */
+img {
+    max-width: 100px;
+    height: auto;
+    margin-top: 5px;
+}

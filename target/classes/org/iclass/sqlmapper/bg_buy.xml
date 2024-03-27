@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="bg_buy">
+ 
+ 
+ 	<select id="getList" resultType="org.iclass.vo.Notice" 
+ 			parameterType="org.iclass.vo.Paging" >
+ 		SELECT * FROM 
+			(SELECT rownum r ,f.* from
+				(SELECT * 
+				 FROM notice  
+				<if test="column != null and column != 'createdAt'">
+				 WHERE ${column} LIKE '%' || #{findText} || '%'
+				 </if>
+				  <if test="column != null and column == 'createdAt'">
+				 WHERE TO_CHAR(createdAt,'YYYY-MM-DD') = #{findText}
+				 </if>
+				 ORDER BY idx DESC) f
+		 	)
+		WHERE r BETWEEN #{startNo} AND #{endNo}	
+ 	</select>
+ 	<select id="count" resultType="int" 
+ 			parameterType="java.util.Map" >
+ 		SELECT count(*) 
+		FROM notice  
+		 <if test="column != null and column != 'createdAt'">
+		 WHERE ${column} LIKE '%' || #{findText} || '%'
+		 </if>
+		  <if test="column != null and column == 'createdAt'">
+		 WHERE TO_CHAR(createdAt,'YYYY-MM-DD') = #{findText}
+		 </if>
+ 	</select>
+ 	
+ 	<insert id="insert" parameterType="org.iclass.vo.BG_BUYS">
+ 		INSERT INTO BG_BUYS
+		VALUES (BG_BUYS_SEQ.nextval, #{menu_code}, #{order_id}, #{detail_option_seq},#{detail_option_desc},#{amount},#{user_id},#{pay_type},#{payment_key},#{create_dttm},#{buy_title})
+ 	</insert>
+ 
+ 	<select id="selectbyuser_id" parameterType="String" resultType="org.iclass.vo.BG_BUYS">
+ 		SELECT * 
+		FROM BG_BYUS
+		WHERE USER_ID = #{USER_ID} 
+ 	</select>
+ 	
+ 	
+ 	<select id="buymenu" resultType="org.iclass.vo.BG_BUYS">
+ 		SELECT * 
+		FROM BG_BYUS
+ 	</select>
+ 	
+ 	<update id="update" parameterType="org.iclass.vo.Notice">
+ 		UPDATE notice
+ 		SET title=#{title},
+ 			content=#{content},
+ 			attachFile=#{attachFile,jdbcType=VARCHAR},
+ 			uploadFile=#{uploadFile,jdbcType=VARCHAR}
+		WHERE idx = #{idx}
+ 	</update>
+ 	
+ 	<delete id="delete" parameterType="int">
+ 		DELETE FROM notice WHERE idx=#{idx}
+ 	</delete>
+ 	
+ 	 	 <select id="selectBybuymenu" parameterType="String" resultType="org.iclass.vo.BG_BUYMENU">
+		SELECT bm.IMG_NAME,menu_name ,DETAIL_OPTION_DESC ,AMOUNT ,PAY_TYPE ,bb.CREATE_DTTM 
+		FROM BG_BUYS bb ,BG_MENU bm WHERE BB.MENU_CODE =BM.MENU_CODE
+		and bb.USER_ID=#{USER_ID}
+		ORDER BY bb.CREATE_DTTM  desc
+  	</select>
+ 	
+ 	
+ 	
+
+ 	
+ </mapper>
+ 
+ 
+ 
+ 
+ 
+ 

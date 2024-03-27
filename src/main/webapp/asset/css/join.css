@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+body {
+   font-family: "Hahmlet", serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+}
+
+.con center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+.join {
+   display: flex;
+   justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px; 
+}
+
+.tab-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 60px 80px;
+  border-radius: 8px;
+  width: 800px;
+  position: relative;
+  margin-top: 20px; /* 여기에 margin-top 속성을 추가합니다. */
+}
+
+
+.join-title, .join-wrap {
+    width: 100%;
+    list-style-type: none;
+}
+
+.join-title li, .join-wrap li {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#passlabel {
+    font-size: 12px;
+    color: #999;
+}
+
+input[type=text] {
+  color: black;
+  width: calc(100% - 24px);
+  padding: 12px;
+  margin-top: 8px;
+  border: 2px solid red !important;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color .3s, background-color .3s;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    border-color: #ff7f50;
+}
+
+.join-btn {
+    width: 100%;
+    background-color: #dc2f02;
+    color: white;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color .3s;
+    font-family: "Hahmlet", serif;
+}
+
+.join-btn:hover {
+    background-color: #9d0208;
+}
+
+/* 여기서부터 사용자 정의 스타일 시작 */
+input#user_id.id-input,
+input#user_password,
+input#user_password2,
+input#user_name {
+   width: 300px;
+    height: 55px;
+   background-color: white;
+   border-radius: 0.5rem;
+   font-family: "Hahmlet", serif; 
+}
+
+button.button-chk {
+   width: 120px;
+    height: 48px;
+   background-color: #d00000;
+   border-radius: 0.5rem;
+   color: white;
+   font-size: 1.5rem;
+   display: inline-block;
+   margin-left: 5px;
+   margin-top: 5.5px;
+   border: 2px solid #d00000 !important;
+   transition: background-color .3s;
+   font-family: "Hahmlet", serif;
+}
+
+button.button-chk:hover {
+   background-color: #9d0208;
+}
+
+#user_id::placeholder,
+#user_password::placeholder,
+#user_password2::placeholder,
+#user_name::placeholder {
+    color: #ced4da;
+}
+
+.join-wrap li label {
+    font-size: 12px;
+}
+
+.join-wrap li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.join-wrap li input[type="text"],
+.join-wrap li input[type="password"] {
+    flex: 1;
+    width: calc(100% - 100px);
+}
+
+.join-wrap li label {
+    margin-left: 10px;
+}
+
+.li-tag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.li-tag h6 {
+    font-size: 40px;
+}
+
+.li-tag p {
+   font-family: "Hahmlet", serif;
+    font-size: 20px;
+}
+
+.li-tag p {
+    margin-top: 5px;
+}
+
+.fa-burger {
+    color: #ffb703;
+}
+
+input[type="text"],
+input[type="password"] {
+    border: 2px solid red !important;
+}
+
+@keyframes rainbowAnimation {
+  0%{color: red;}
+  28%{color: orange;}
+  42%{color: green;}
+  57%{color: blue;}
+  71%{color: indigo;}
+  85%{color: violet;}
+  100%{color: red;}
+}
+
+.rainbow-text {
+  animation: rainbowAnimation 2s infinite; /* 2초 동안 무한 반복 */
+}
+

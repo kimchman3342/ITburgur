@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="bg_user">
+<insert id="join" parameterType="org.iclass.vo.BG_USER">
+       insert into 
+       BG_USER(user_id,user_password,user_name,create_dttm)
+       values
+       (#{user_id},#{user_password},#{user_name},sysdate)
+    </insert>
+ 	
+ 	<select id="login" resultType="org.iclass.vo.BG_USER" parameterType="Map">
+		SELECT * 
+		FROM 
+			BG_USER
+		WHERE 
+			user_id=#{user_id} and user_password=#{user_password}
+	</select>
+	
+	<select id="isExistId" resultType="int" parameterType="String">
+		SELECT COUNT(*) AS COUNT FROM BG_USER WHERE user_id=#{user_id}
+	</select> 
+	<select id="getById" resultType="org.iclass.vo.BG_USER" parameterType="String">
+ 		SELECT * 
+		FROM 
+			BG_USER
+		WHERE 
+			user_id=#{user_id} 
+ 	</select>
+ 	<update id="updatePassword" parameterType="java.util.Map">  <!-- 기존 패스워드를 해쉬값으로 변경하기 위해 사용(테스트용) -->
+		UPDATE BG_USER
+		SET user_password=#{user_password}
+		WHERE 
+			user_id=#{user_id}
+	</update>
+		<update id="modify" parameterType="org.iclass.vo.BG_USER">
+		UPDATE BG_USER
+		SET user_name=#{user_name},
+		user_password=#{user_password}
+	  WHERE
+	  		user_id=#{user_id}		
+	</update>
+ </mapper>
+ 
+ 
+ 
+ 
+ 
+ 

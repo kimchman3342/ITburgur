@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bg_notice">
+	<select id="getList" resultType="org.iclass.vo.Notice"
+		parameterType="org.iclass.vo.Paging">
+		SELECT * FROM
+		(SELECT rownum r ,f.* from
+		(SELECT *
+		FROM BG_NOTICE
+		<if test="column != null and column != 'notice_date'">
+			<!-- WHERE notice_title LIKE '%' || #{findText, jdbcType=VARCHAR} || '%' 
+				OR notice_content LIKE '%' || #{findText, jdbcType=VARCHAR} || '%' -->
+			WHERE ${column} LIKE '%' || #{findText} || '%'
+
+		</if>
+		<if test="column != null and column == 'notice_date'">
+			WHERE TO_CHAR(notice_date,'YYYY-MM-DD') = #{findText}
+		</if>
+		ORDER BY notice_date DESC) f
+		)
+		WHERE r BETWEEN #{startNo} AND #{endNo}
+	</select>
+	<select id="count" resultType="int"
+		parameterType="java.util.Map">
+		SELECT count(*)
+		FROM BG_NOTICE
+		<if test="column != null and column != 'notice_date'">
+			WHERE notice_title LIKE '%' || #{findText} || '%' OR
+			notice_content
+			LIKE '%' || #{findText} || '%'
+		</if>
+		<if test="column != null and column == 'notice_date'">
+			WHERE TO_CHAR(notice_date,'YYYY-MM-DD') = #{findText}
+		</if>
+	</select>
+
+	<select id="getOne" parameterType="int"
+		resultType="org.iclass.vo.Notice">
+		SELECT *
+		FROM BG_NOTICE
+		WHERE notice_seq = #{notice_seq}
+	</select>
+	<!-- <insert id="insert" parameterType="org.iclass.vo.Notice"> INSERT INTO 
+		BG_NOTICE VALUES (BG_NOTICE_SEQ.nextval, #{notice_title}, #{notice_content},0,sysdate, 
+		#{notice_image,jdbcType=VARCHAR} </insert> -->
+	<insert id="insert" parameterType="org.iclass.vo.Notice">
+		INSERT INTO BG_NOTICE (
+		notice_seq, notice_title, notice_content, notice_readcount,
+		notice_date, notice_image
+		) VALUES (
+		BG_NOTICE_SEQ.nextval,
+		#{notice_title}, #{notice_content},
+		0, sysdate, #{notice_image,
+		jdbcType=VARCHAR}
+		)
+	</insert>
+	<update id="update" parameterType="org.iclass.vo.Notice">
+		UPDATE BG_NOTICE
+		SET
+		notice_title=#{notice_title},
+		notice_content=#{notice_content},
+		notice_image=#{notice_image,jdbcType=VARCHAR}
+		WHERE
+		notice_seq =
+		#{notice_seq}
+	</update>
+	<update id="setReadCount" parameterType="int">
+		UPDATE BG_NOTICE
+		SET
+		notice_readcount = notice_readcount +1
+		WHERE
+		notice_seq = #{notice_seq}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM BG_NOTICE WHERE
+		notice_seq=#{notice_seq}
+	</delete>
+</mapper>

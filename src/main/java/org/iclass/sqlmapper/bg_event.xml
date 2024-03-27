@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="event">
+
+	<select id="listAll" resultType="org.iclass.vo.BG_EVENT">
+		SELECT *
+		FROM
+		BG_EVENT
+		order by event_regdate asc
+	</select>
+	<select id="getOne" parameterType="int"
+		resultType="org.iclass.vo.BG_EVENT">
+		SELECT *
+		FROM
+		BG_EVENT
+		WHERE event_seq = #{event_seq}
+	</select>
+	<insert id="insert" parameterType="org.iclass.vo.BG_EVENT">
+		INSERT INTO BG_EVENT
+		(event_seq,event_title,event_content,event_regdate,event_image,user_id,like_count)
+		VALUES (BG_EVENT_SEQ.nextval,
+		#{event_title},
+		#{event_content,jdbcType=CLOB},
+		sysdate,
+		#{event_image},#{user_id},0)
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from BG_EVENT where event_seq=#{event_seq}
+				
+	</delete>
+	<select id="selectByIdx" parameterType="int" resultType="org.iclass.vo.BG_EVENT">
+ 		SELECT * 
+ 		FROM 
+ 			BG_EVENT 
+ 		WHERE 
+ 			event_seq=#{event_seq}   <!-- PK로 조회 -->
+ 	</select>
+ 		<update id="updateLikeCount" parameterType="int">
+    UPDATE BG_EVENT
+    SET like_count = (
+    	select count(*) from likeuser where eventid = #{eventid}
+    )
+    WHERE event_seq = #{event_seq}
+	</update>
+	
+	<select id="getLikeUsers" parameterType="int" resultType="String">
+		select user_id
+		from likeuser
+		where eventid = #{eventid}
+	</select>
+	<insert id="addLikeUser" parameterType="Map">
+		insert into likeuser values (#{eventId}, #{userId})
+	</insert>
+	<update id="update" parameterType="org.iclass.vo.BG_EVENT">
+ 		UPDATE BG_EVENT
+ 		SET 
+ 			event_title=#{event_title}, event_content=#{event_content},event_image=#{event_image}
+ 		WHERE event_seq=#{event_seq}
+ 	</update>
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 

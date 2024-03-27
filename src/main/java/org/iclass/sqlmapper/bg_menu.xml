@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="bg_menu">
+	 
+ 	<select id="menuList" resultType="org.iclass.vo.BG_MENU">
+ 		SELECT *
+ 		FROM
+ 			BG_MENU
+ 	</select>
+ 	
+ 	<select id="cateList" resultType="org.iclass.vo.BG_MENU">
+ 		SELECT * FROM BG_MENU WHERE category_code = #{category_code,jdbcType=VARCHAR}
+ 	</select>
+ 	
+ 	<select id="getOne" parameterType="String" resultType="org.iclass.vo.BG_MENU">
+ 		SELECT *
+ 		FROM
+ 			BG_MENU
+ 		WHERE menu_code = #{menu_code}
+ 	</select>
+ 	
+ 	<insert id="insert" parameterType="org.iclass.vo.BG_MENU">
+ 		INSERT INTO BG_MENU(menu_code,menu_name,menu_desc,price,create_dttm,img_name)
+ 		VALUES (#{menu_code},#{menu_name},#{menu_desc,jdbcType=VARCHAR},#{price},#{create_dttm,jdbcType=VARCHAR},#{img_name,jdbcType=VARCHAR})
+ 	</insert>
+ 	<!-- jdbcType=VARCHAR  와 같은 설정은 null 값을 저장할 때 꼭 해야 합니다. 
+ 	     pubdate는 db에서 널 허용 했으므로 값이 없어도 되며 그 때에는 pubdate 컬럼의 데이터 형식을 알려주는 내용입니다.
+ 	-->
+ 	
+ 	<select id="selectBuyMenuInfo" parameterType="java.util.Map" resultType="java.util.Map">
+ 		SELECT  M.MENU_NAME || ' 외 ' ||  SUBSTR(B.OPTION_NAME_LIST,1,7) || '...' AS BUY_TITLE
+			  , M.IMG_NAME 
+			  , M.PRICE 
+			  , B.OPTION_SEQ_LIST
+			  , B.OPTION_NAME_LIST
+			  , B.OPTION_PRICE_LIST
+		FROM  BG_MENU M
+			, (
+				SELECT   MAX(X.MENU_CODE) AS MENU_CODE
+						,LISTAGG(X.OPTION_SEQ, ',') WITHIN GROUP (ORDER BY X.OPTION_SEQ) AS OPTION_SEQ_LIST
+						,LISTAGG(X.OPTION_NAME,', ') AS OPTION_NAME_LIST
+						,LISTAGG(X.OPTION_PRICE,', ') WITHIN GROUP (ORDER BY X.OPTION_SEQ) AS OPTION_PRICE_LIST
+				FROM (
+							SELECT *
+							FROM BG_MENU_OPTION 
+							WHERE MENU_CODE = #{menu_code}
+							<if test="option_seq_list != null">
+								AND OPTION_SEQ IN
+						        <foreach item="item" index="index" collection="option_seq_list" open="(" separator="," close=")">
+						            #{item}
+		        				</foreach>
+							</if>
+	        				 ) X
+				) B
+		WHERE M.MENU_CODE = B.MENU_CODE (+)
+		AND M.MENU_CODE = #{menu_code}
+    </select>
+ 	
+ </mapper>
+ 
+ 
+ 
+ 
+ 
+ 

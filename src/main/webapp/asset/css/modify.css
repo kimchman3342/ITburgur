@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+body {
+    font-family: 'NotoSansKR', Arial, sans-serif;
+    font-style: inherit;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+
+li{
+	    color: #071d3d;
+    margin: 15px;
+    list-style: none;
+    font: inherit;
+    vertical-align: baseline;
+    font-weight: bold;
+	
+}
+ul li {
+    padding-left: 0.5em;
+}
+li {
+    display: inline-flex;
+}
+html, body, div, ul, ol, li, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none;}
+    
+    h3 {
+    font-size: 1.2em;
+    letter-spacing: -0.025em;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+    font-weight: 600;
+    line-height: 1.75em;
+    margin-bottom: 1em;
+}

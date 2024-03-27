@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+@font-face {
+   font-family: 'SUIT-Regular';
+   src:
+      url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2')
+      format('woff2');
+   font-weight: normal;
+   font-style: normal;
+}
+
+body.is-preload{
+   text-align: center;
+   display: flex;
+   background-image: url(asset/images/mainbackground.jpg);
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+}
+
+#book h3{
+   font-size: 35px;
+   
+}
+
+ #book div.container, #book h1, #book th {
+    font-family: "Hahmlet", serif;
+   margin: 20px;
+   font-size: 15px;
+}
+
+#book th {
+   font-weight: 200;
+    font-family: "Hahmlet", serif;
+}
+
+#book h3, #book .sub {
+   margin: 20px;
+   text-align: center;
+   font-family: "Hahmlet", serif;
+}
+
+#book th {
+   width: 10%;
+   font-family: "Hahmlet", serif;
+}
+
+#book table {
+   width: 50rem;
+   margin: auto;
+   font-family: "Hahmlet", serif;
+}
+
+#book th {
+   text-align: center;
+   background-color: #9d0208;
+   color: #ff8080;
+   margin: 7px;
+   padding: 7px;
+   font-family: "Hahmlet", serif;
+}
+
+#book input, #book textarea {
+   padding: 10px;
+   border: 1px solid #4080bf;
+   border-radius: 3px;
+   font-family: "Hahmlet", serif;
+}
+
+button.book-btn {
+   width: 10%;
+   background-color: #dc2f02;
+   color: white;
+   font-size: 20px;
+   margin-top: 20px;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color .3s;
+}
+
+button.book-btn:hover {
+   border: 2px solid #9d0208;
+   background-color: #9d0208;
+   font-weight: bold;
+}
+
+#book table #editor {
+   min-height: 40rem;
+   font-family: "Hahmlet", serif;
+}
+
+/* 변경 */
+#book .ql-toolbar button {
+   background: none;
+   border: none;
+   cursor: pointer;
+   display: inline-block;
+   height: 24px;
+   padding: 3px 5px;
+   width: 28px;
+   min-width: 28px;
+}
